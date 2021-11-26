@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getHomepageData } from '../services/contentstack';
 import { Hero } from '../components/Hero/Hero';
 import { NewsCard } from '../components/NewsCard/NewsCard';
-import { INewsData } from "../interfaces/INewsData";
+import { INewsData } from "../interfaces";
 
 interface IHomeData {
   title: string;
@@ -11,7 +11,7 @@ interface IHomeData {
   modular_blocks: any[];
 }
 
-export function Home() {
+export function HomePage() {
   const [homepageData, setHomepageData] = useState<IHomeData>({} as IHomeData);
   let featuredNews;
 
@@ -19,6 +19,7 @@ export function Home() {
     getHomepageData()
       .then((result) => {
         setHomepageData(result[0][0]);
+        // console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +40,10 @@ export function Home() {
               <h2>{featuredNews.featured_news_title}</h2>
               {<div dangerouslySetInnerHTML={{ __html: featuredNews.featured_news_description }}></div>}
               <div>
-                {featuredNews.news.map((item: INewsData, i: number) => <NewsCard key={i} newsData={item} linkTo={`./news${item.url}`}/>)}
+                {homepageData.modular_blocks.find(obj => obj.hasOwnProperty('featured_news')).featured_news.news.map((item: INewsData, index: number) => {
+                  return <div key={index}>{item.url}</div>
+                  // return <NewsCard key={index} newsData={item} />
+                })}
               </div>
             </section>
             :

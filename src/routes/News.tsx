@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { INewsData } from "../interfaces/INewsData";
+import { INewsData } from "../interfaces";
 import { getSingleNewsDataByUrl } from "../services/contentstack";
 
 export function News() {
@@ -8,7 +8,7 @@ export function News() {
   const [newsData, setNewsData] = useState<INewsData>({} as INewsData);
 
   useEffect(() => {
-    getSingleNewsDataByUrl(`/${(params.newsUrl as string)}`)
+    getSingleNewsDataByUrl((params.newsUrl as string))
       .then((result) => {
         setNewsData(result[0][0]);
       })
@@ -20,7 +20,7 @@ export function News() {
   return (
     <main>
       <div className="container">
-        <h2>{newsData.title}</h2>
+        <h2>{newsData && newsData.title}</h2>
       </div>
     </main>
   )

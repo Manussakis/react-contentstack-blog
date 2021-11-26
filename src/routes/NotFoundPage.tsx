@@ -1,4 +1,4 @@
-export function PageNotFound() {
+export function NotFoundPage() {
   return (
     <main>
       <div className="container">

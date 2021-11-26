@@ -2,20 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { App } from './App';
-import { Home } from './routes/Home';
-import { NewsList } from './routes/NewsList';
+import { HomePage } from './routes/HomePage';
+import { NewsPage } from './routes/NewsPage';
 import { News } from './routes/News';
-import { PageNotFound } from './routes/PageNotFound';
+import { NotFoundPage } from './routes/NotFoundPage';
+import { CategoryPage } from './routes/CategoryPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<NewsList />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:newsUrl" element={<News />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/category/:categoryUrl" element={<CategoryPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

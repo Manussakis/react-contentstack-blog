@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom"
-import { INewsData } from "../../interfaces/INewsData"
+import { ICategoryData, INewsData } from "../../interfaces"
 
 export interface INewsCardProps {
   newsData: INewsData;
-  linkTo: string;
 }
 
-export function NewsCard({ newsData, linkTo }: INewsCardProps) {
+export function NewsCard({ newsData }: INewsCardProps) {
   return (
-    <Link to={linkTo}>
-      <article>
+    <article>
+      <Link to={newsData.url}>
         <h3>{newsData.title}</h3>
-        <div dangerouslySetInnerHTML={{ __html: newsData.excerpt }}></div>
-      </article>
-    </Link>
+      </Link>
+      <ul>
+        {newsData.categories.map((category: ICategoryData, index: number) => {
+          return (
+            <li key={index}>
+              <Link to={category.url}>{category.title}</Link>
+            </li>
+          )
+        })}
+      </ul>
+      <div dangerouslySetInnerHTML={{ __html: newsData.excerpt }}></div>
+    </article>
   )
 }
