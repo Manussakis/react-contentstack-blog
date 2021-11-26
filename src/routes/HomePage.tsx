@@ -19,7 +19,6 @@ export function HomePage() {
     getHomepageData()
       .then((result) => {
         setHomepageData(result[0][0]);
-        // console.log(result);
       })
       .catch((error) => {
         console.log(error);
@@ -40,9 +39,8 @@ export function HomePage() {
               <h2>{featuredNews.featured_news_title}</h2>
               {<div dangerouslySetInnerHTML={{ __html: featuredNews.featured_news_description }}></div>}
               <div>
-                {homepageData.modular_blocks.find(obj => obj.hasOwnProperty('featured_news')).featured_news.news.map((item: INewsData, index: number) => {
-                  return <div key={index}>{item.url}</div>
-                  // return <NewsCard key={index} newsData={item} />
+                {featuredNews.news.map((item: INewsData, index: number) => {
+                  return <NewsCard key={index} newsData={item} />
                 })}
               </div>
             </section>

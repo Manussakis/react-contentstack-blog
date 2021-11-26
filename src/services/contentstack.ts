@@ -9,7 +9,7 @@ export const Stack = Contentstack.Stack(
 export function getHomepageData() {
   return Stack.ContentType("homepage")
     .Query()
-    .includeReference(["modular_blocks.featured_news.news"])
+    .includeReference(["modular_blocks.featured_news.news", "modular_blocks.featured_news.news.categories"])
     .toJSON()
     .find();
 }
