@@ -1,16 +1,13 @@
 import { Header } from './components/Header/Header';
-import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
+import { Outlet } from "react-router-dom";
 import { GlobalStyles } from './styles/global';
-import { HomeContextProvider } from './HomeContext';
 
 export function App() {
   return (
     <>
-     <Header />
-      <HomeContextProvider>
-        <Home />
-      </HomeContextProvider>
+      <Header />
+      <Outlet />
       <Footer />
       <GlobalStyles />
     </>
