@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { NewsCard } from "../components/NewsCard/NewsCard";
 import { getNewsData, getNewsPageData } from "../services/contentstack";
 import { INewsData, INewsPageData } from "../interfaces";
+import { Main } from "../components/Main/Main";
+import { NewsGrid } from "../components/NewsGrid/NewsGrid";
 
 export function NewsPage() {
   const [newsPage, setNewsPage] = useState<INewsPageData>({} as INewsPageData);
@@ -9,18 +10,13 @@ export function NewsPage() {
 
   useEffect(() => {
     getNewsPageData()
-      .then((result) => {
-        setNewsPage(result[0][0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => setNewsPage(result[0][0]))
+      .catch((error) => console.log(error));
 
     getNewsData()
       .then((result) => {
         setNews(result[0]);
         console.log(result[0]);
-
       })
       .catch((error) => {
         console.log(error);
@@ -28,16 +24,12 @@ export function NewsPage() {
   }, []);
 
   return (
-    <main>
-      <div className="container">
+    <Main>
+      <section>
         <h2>{newsPage && newsPage.title}</h2>
         <p>{newsPage && newsPage.description}</p>
-        <div>
-          {news.map((item: INewsData, index:number) => {
-            return <NewsCard key={index} newsData={item} />
-          })}
-        </div>
-      </div>
-    </main>
+        <NewsGrid news={news}/>
+      </section>
+    </Main>
   )
 }

@@ -1,0 +1,12 @@
+@import '../../styles/settings.scss';
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+
+  @media only screen and (min-width: $large) {
+    grid-template-columns: repeat(3, minmax(10px, 1fr));
+  }
+}

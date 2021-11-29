@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { getHomepageData } from "../../services/contentstack";
-import { Logo } from "../Logo/Logo";
-import { Navigation } from "../Navigation/Navigation";
 
-import './Header.scss';
+import './Logo.scss';
 
-export function Header() {
+export function Logo() {
   const [siteName, setSiteName] = useState("");
 
   useEffect(() => {
@@ -17,15 +15,7 @@ export function Header() {
         console.log(error);
       });
   }, []);
-
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__inner">
-          <Logo />
-          <Navigation />
-        </div>
-      </div>
-    </header>
+    <a className="logo" href="/">{siteName}</a>
   )
 }

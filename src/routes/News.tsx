@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { INewsData } from "../interfaces";
+import { Link, useParams } from "react-router-dom";
+import { ICategoryData, INewsData } from "../interfaces";
 import { getSingleNewsDataByUrl } from "../services/contentstack";
 
 export function News() {
@@ -20,7 +20,16 @@ export function News() {
   return (
     <main>
       <div className="container">
-        <h2>{newsData && newsData.title}</h2>
+        <h2>{newsData.title}</h2>
+        <ul>
+        {newsData.categories && newsData.categories.map((category: ICategoryData, index: number) => {
+          return (
+            <li key={index}>
+              <Link to={category.url}>{category.title}</Link>
+            </li>
+          )
+        })}
+      </ul>
       </div>
     </main>
   )

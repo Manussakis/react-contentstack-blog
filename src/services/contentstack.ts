@@ -1,15 +1,19 @@
 import Contentstack from "contentstack";
 
 export const Stack = Contentstack.Stack(
-  "blte54cc2953fcedc33",
-  "cs90c1b26251f7c1bfbe249ef4",
-  "dev"
+  process.env.REACT_APP_CONTENTSTACK_API_KEY as string,
+  process.env.REACT_APP_CONTENTSTACK_DELIVERY_KEY as string,
+  process.env.NODE_ENV
 );
 
 export function getHomepageData() {
   return Stack.ContentType("homepage")
     .Query()
-    .includeReference(["modular_blocks.featured_news.news", "modular_blocks.featured_news.news.categories"])
+    .includeReference([
+      "modular_blocks.featured_news.news",
+      "modular_blocks.featured_news.news.categories",
+      "modular_blocks.featured_news.news.author"
+    ])
     .toJSON()
     .find();
 }
@@ -24,34 +28,50 @@ export function getNewsPageData() {
 export function getNewsData() {
   return Stack.ContentType("news")
     .Query()
-    .includeReference(["categories"])
+    .includeReference(["categories", "author"])
     .toJSON()
     .find();
 }
 
 export function getSingleNewsDataByUrl(newsUrl: string) {
-  const newsQuery = Stack.ContentType("news")
+  return Stack.ContentType("news")
     .Query()
-    .toJSON();
-
-  return newsQuery.where("url", `/news/${newsUrl}`).find();
+    .includeReference(["categories", "author"])
+    .toJSON()
+    .where("url", `/news/${newsUrl}`)
+    .find();
 }
 
 export function getCategoryDataByUrl(categoryUrl: string) {
-  const categoryQuery = Stack.ContentType("category")
+  return Stack.ContentType("category")
     .Query()
-    .toJSON();
-
-  return categoryQuery.where("url", `/category/${categoryUrl}`).find();
+    .toJSON()
+    .where("url", `/category/${categoryUrl}`)
+    .find();
 }
 
 export function getNewsByCategoryUrl(categoryUrl: string) {
-  const newsQuery = Stack.ContentType("news")
+  return Stack.ContentType("news")
     .Query()
-    .includeReference(["categories"])
-    .toJSON();
-
-  return newsQuery
+    .includeReference(["categories", "author"])
+    .toJSON()
     .referenceIn("categories", { url: `/category/${categoryUrl}` })
+    .find();
+}
+
+export function getAuthorDataByUrl(authorUrl: string) {
+  return Stack.ContentType("author")
+    .Query()
+    .toJSON()
+    .where("url", `/author/${authorUrl}`)
+    .find();
+}
+
+export function getNewsByAuthorUrl(authorUrl: string) {
+  return Stack.ContentType("news")
+    .Query()
+    .includeReference(["categories", "author"])
+    .toJSON()
+    .referenceIn("author", { url: `/author/${authorUrl}` })
     .find();
 }

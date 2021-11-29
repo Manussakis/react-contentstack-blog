@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { NewsCard } from "../components/NewsCard/NewsCard";
+import { Main } from "../components/Main/Main";
+import { NewsGrid } from "../components/NewsGrid/NewsGrid";
 import { ICategoryData, INewsData } from "../interfaces";
 import { getCategoryDataByUrl, getNewsByCategoryUrl } from "../services/contentstack";
 
@@ -15,24 +16,16 @@ export function CategoryPage() {
       .catch((error) => console.log(error));
 
     getNewsByCategoryUrl((params.categoryUrl as string))
-      .then((result) => {
-        setNews(result[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => setNews(result[0]))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
-    <main>
-      <div className="container">
+    <Main>
+      <section>
         <h2>{categoryPageData && categoryPageData.title}</h2>
-        <div>
-          {news.map((item: INewsData, index) => {
-            return <NewsCard key={index} newsData={item} />
-          })}
-        </div>
-      </div>
-    </main>
+        <NewsGrid news={news}/>
+      </section>
+    </Main>
   )
 }

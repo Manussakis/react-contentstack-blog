@@ -1,0 +1,15 @@
+:root {
+  --primary: #192136;
+  --surface: #F4F6FB;
+  --accent: #5429CC;
+  --background-color: #ffffff;
+}
+
+// Breakpoints
+$small: 480px;
+$medium: 720px;
+$large: 1280px;
+
+// Transition
+$transition-duration: .2s;
+$transition-time-function: ease-in-out;

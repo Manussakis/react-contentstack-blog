@@ -1,7 +1,8 @@
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { Outlet } from "react-router-dom";
-import { GlobalStyles } from './styles/global';
+
+import './styles/style.scss';
 
 export function App() {
   return (
@@ -9,7 +10,6 @@ export function App() {
       <Header />
       <Outlet />
       <Footer />
-      <GlobalStyles />
     </>
   );
 }

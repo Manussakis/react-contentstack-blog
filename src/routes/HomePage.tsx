@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getHomepageData } from '../services/contentstack';
 import { Hero } from '../components/Hero/Hero';
-import { NewsCard } from '../components/NewsCard/NewsCard';
-import { INewsData } from "../interfaces";
-
-interface IHomeData {
-  title: string;
-  heading_1: string;
-  description: string;
-  modular_blocks: any[];
-}
+import { NewsGrid } from '../components/NewsGrid/NewsGrid';
+import { Main } from '../components/Main/Main';
+import { IHomeData } from "../interfaces";
 
 export function HomePage() {
   const [homepageData, setHomepageData] = useState<IHomeData>({} as IHomeData);
@@ -32,23 +26,17 @@ export function HomePage() {
   return (
     <>
       <Hero heading={homepageData.heading_1} description={homepageData.description} />
-      <main>
-        <div className="container">
+      <Main>
           {featuredNews ?
             <section>
               <h2>{featuredNews.featured_news_title}</h2>
               {<div dangerouslySetInnerHTML={{ __html: featuredNews.featured_news_description }}></div>}
-              <div>
-                {featuredNews.news.map((item: INewsData, index: number) => {
-                  return <NewsCard key={index} newsData={item} />
-                })}
-              </div>
+              <NewsGrid news={featuredNews.news}/>
             </section>
             :
             <div>Loading</div>
           }
-        </div>
-      </main>
+      </Main>
     </>
   )
 }

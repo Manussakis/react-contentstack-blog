@@ -7,6 +7,7 @@ import { NewsPage } from './routes/NewsPage';
 import { News } from './routes/News';
 import { NotFoundPage } from './routes/NotFoundPage';
 import { CategoryPage } from './routes/CategoryPage';
+import { AuthorPage } from './routes/AuthorPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:newsUrl" element={<News />} />
           <Route path="/category/:categoryUrl" element={<CategoryPage />} />
+          <Route path="/author/:authorUrl" element={<AuthorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
