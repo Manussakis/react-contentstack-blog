@@ -8,12 +8,8 @@ export function Logo() {
 
   useEffect(() => {
     getHomepageData()
-      .then((result) => {
-        setSiteName(result[0][0].title);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => setSiteName(result[0][0].title))
+      .catch((error) => console.log(error));
   }, []);
   return (
     <a className="logo" href="/">{siteName}</a>

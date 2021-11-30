@@ -3,6 +3,7 @@ export interface IHomeData {
   heading_1: string;
   description: string;
   modular_blocks: any[];
+  hero_image: IImage;
 }
 
 export interface INewsData {
@@ -12,7 +13,7 @@ export interface INewsData {
   url: string;
   categories: ICategoryData[];
   featured_image: IFeaturedImage;
-  updated_at: Date;
+  updated_at: string;
   author: IAuthorData[];
 }
 
@@ -41,4 +42,8 @@ export interface IAuthorData {
 
 export interface IImage {
   url: string;
+}
+
+export interface IFooterData {
+  colophon: string;
 }

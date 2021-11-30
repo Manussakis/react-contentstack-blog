@@ -23,16 +23,6 @@
   margin-bottom: 1.5rem;
 }
 
-.news-card__title {
-  a {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
 .news-card__img-link {
   display: block;
   transition: box-shadow $transition-duration $transition-time-function;
@@ -61,11 +51,6 @@
   text-decoration: underline;
   transition: color $transition-duration $transition-time-function,
     box-shadow $transition-duration $transition-time-function;
-}
-
-.news-card__date {
-  text-align: right;
-  margin-bottom: 0;
 }
 
 .news-card__author-name {

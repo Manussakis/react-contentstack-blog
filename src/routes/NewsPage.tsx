@@ -3,6 +3,7 @@ import { getNewsData, getNewsPageData } from "../services/contentstack";
 import { INewsData, INewsPageData } from "../interfaces";
 import { Main } from "../components/Main/Main";
 import { NewsGrid } from "../components/NewsGrid/NewsGrid";
+import { isEmpty } from "lodash";
 
 export function NewsPage() {
   const [newsPage, setNewsPage] = useState<INewsPageData>({} as INewsPageData);
@@ -14,22 +15,25 @@ export function NewsPage() {
       .catch((error) => console.log(error));
 
     getNewsData()
-      .then((result) => {
-        setNews(result[0]);
-        console.log(result[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => setNews(result[0]))
+      .catch((error) => console.log(error));
   }, []);
+
+  function isDataLoaded() {
+    return news.length > 0 && !isEmpty(newsPage);
+  }
 
   return (
     <Main>
-      <section>
-        <h2>{newsPage && newsPage.title}</h2>
-        <p>{newsPage && newsPage.description}</p>
-        <NewsGrid news={news}/>
-      </section>
+      {isDataLoaded() ?
+        <section>
+          <h2>{newsPage && newsPage.title}</h2>
+          <p>{newsPage && newsPage.description}</p>
+          <NewsGrid news={news} />
+        </section>
+        :
+        'Loading'
+      }
     </Main>
   )
 }

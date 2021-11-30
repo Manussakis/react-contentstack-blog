@@ -1,5 +1,0 @@
-@function pxToRem($px) {
-  $result: ($px / 16);
-
-  @return #{$result}rem;
-}

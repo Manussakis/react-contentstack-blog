@@ -75,3 +75,10 @@ export function getNewsByAuthorUrl(authorUrl: string) {
     .referenceIn("author", { url: `/author/${authorUrl}` })
     .find();
 }
+
+export function getFooterData() {
+  return Stack.ContentType("footer")
+    .Query()
+    .toJSON()
+    .find();
+}

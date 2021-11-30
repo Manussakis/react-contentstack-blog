@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import { AuthorAvatar } from "../components/AuthorAvatar/AuthorAvatar";
 import { Main } from "../components/Main/Main";
 import { NewsGrid } from "../components/NewsGrid/NewsGrid";
 import { IAuthorData, INewsData } from "../interfaces";
+import { isEmpty } from "lodash";
 import { getAuthorDataByUrl, getNewsByAuthorUrl } from "../services/contentstack";
-
 
 export function AuthorPage() {
   let params = useParams();
@@ -23,10 +24,16 @@ export function AuthorPage() {
 
   return (
     <Main>
-      <section>
-        <h2>{authorData && authorData.title}</h2>
-        <NewsGrid news={news}/>
-      </section>
+      {isEmpty(authorData) ?
+        'Loading'
+        :
+        <section>
+          <AuthorAvatar author={authorData}/>
+          <h2>News by {authorData.title}</h2>
+          <p>{authorData.occupation}</p>
+          <NewsGrid news={news} />
+        </section>
+      }
     </Main>
   )
 }

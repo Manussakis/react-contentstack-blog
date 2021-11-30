@@ -11,12 +11,8 @@ export function HomePage() {
 
   useEffect(() => {
     getHomepageData()
-      .then((result) => {
-        setHomepageData(result[0][0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then((result) => setHomepageData(result[0][0]))
+      .catch((error) => console.log(error));
   }, []);
 
   if (homepageData.modular_blocks) {
@@ -25,7 +21,7 @@ export function HomePage() {
 
   return (
     <>
-      <Hero heading={homepageData.heading_1} description={homepageData.description} />
+      <Hero heading={homepageData.heading_1} description={homepageData.description} image={homepageData.hero_image && homepageData.hero_image.url}/>
       <Main>
           {featuredNews ?
             <section>

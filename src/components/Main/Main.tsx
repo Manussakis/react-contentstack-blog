@@ -7,7 +7,7 @@ interface IMainProps {
 export function Main({ children} : IMainProps ) {
   return (
     <main>
-      <div className="container">
+      <div className="o-container">
         {children}
       </div>
     </main>
