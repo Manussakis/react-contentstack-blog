@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { IFooterData } from "../../interfaces";
 import { getFooterData } from "../../services/contentstack";
 
-import './Footer.scss';
+import './styles.scss';
 
 export function Footer() {
   const [footerData, setFooterData] = useState<IFooterData>({} as IFooterData)

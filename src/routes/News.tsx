@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CategoryList } from "../components/CategoryList/CategoryList";
-import { NewsDate } from "../components/NewsDate/NewsDate";
-import { NewsAuthor } from "../components/NewsAuthor/NewsAuthor";
+import { CategoryList } from "../components/CategoryList";
+import { NewsDate } from "../components/NewsDate";
+import { NewsAuthor } from "../components/NewsAuthor";
 import { INewsData } from "../interfaces";
 import { getSingleNewsDataByUrl } from "../services/contentstack";
 import { isEmpty } from "lodash";
-import { Main } from "../components/Main/Main";
+import { Main } from "../components/Main";
 
 export function News() {
   let params = useParams();

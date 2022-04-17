@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { getNewsData, getNewsPageData } from "../services/contentstack";
 import { INewsData, INewsPageData } from "../interfaces";
-import { Main } from "../components/Main/Main";
-import { NewsGrid } from "../components/NewsGrid/NewsGrid";
+import { Main } from "../components/Main";
+import { NewsGrid } from "../components/NewsGrid";
 import { isEmpty } from "lodash";
 
 export function NewsPage() {

@@ -1,7 +1,7 @@
-import { Logo } from "../Logo/Logo";
-import { Navigation } from "../Navigation/Navigation";
+import { Logo } from "../Logo";
+import { Navigation } from "../Navigation";
 
-import './Header.scss';
+import './styles.scss';
 
 export function Header() {
   return (

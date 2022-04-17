@@ -1,4 +1,4 @@
-import './Hero.scss';
+import './styles.scss';
 
 interface HeroProps {
   heading: string;

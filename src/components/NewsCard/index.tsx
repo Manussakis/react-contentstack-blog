@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { INewsData } from "../../interfaces";
-import { NewsAuthor } from "../NewsAuthor/NewsAuthor";
-import { NewsDate } from "../NewsDate/NewsDate";
+import { NewsAuthor } from "../NewsAuthor";
+import { NewsDate } from "../NewsDate";
 
-import './NewsCard.scss';
+import './styles.scss';
 
 interface INewsCardProps {
   newsData: INewsData;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { ICategoryData } from "../../interfaces"
 
-import './CategoryList.scss';
+import './styles.scss';
 
 interface ICategoryListProps {
   categories: ICategoryData[];

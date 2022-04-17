@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import './Navigation.scss'
+import './styles.scss'
 
 interface IMenuItem {
   link: string;

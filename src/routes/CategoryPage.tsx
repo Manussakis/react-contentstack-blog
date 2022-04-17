@@ -1,8 +1,8 @@
 import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Main } from "../components/Main/Main";
-import { NewsGrid } from "../components/NewsGrid/NewsGrid";
+import { Main } from "../components/Main";
+import { NewsGrid } from "../components/NewsGrid";
 import { ICategoryData, INewsData } from "../interfaces";
 import { getCategoryDataByUrl, getNewsByCategoryUrl } from "../services/contentstack";
 

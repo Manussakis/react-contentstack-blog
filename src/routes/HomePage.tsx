@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getHomepageData } from '../services/contentstack';
-import { Hero } from '../components/Hero/Hero';
-import { NewsGrid } from '../components/NewsGrid/NewsGrid';
-import { Main } from '../components/Main/Main';
+import { Hero } from '../components/Hero';
+import { NewsGrid } from '../components/NewsGrid';
+import { Main } from '../components/Main';
 import { IHomeData } from "../interfaces";
 
 export function HomePage() {

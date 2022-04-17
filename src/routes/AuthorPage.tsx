@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import { AuthorAvatar } from "../components/AuthorAvatar/AuthorAvatar";
-import { Main } from "../components/Main/Main";
-import { NewsGrid } from "../components/NewsGrid/NewsGrid";
+import { AuthorAvatar } from "../components/AuthorAvatar";
+import { Main } from "../components/Main";
+import { NewsGrid } from "../components/NewsGrid";
 import { IAuthorData, INewsData } from "../interfaces";
 import { isEmpty } from "lodash";
 import { getAuthorDataByUrl, getNewsByAuthorUrl } from "../services/contentstack";

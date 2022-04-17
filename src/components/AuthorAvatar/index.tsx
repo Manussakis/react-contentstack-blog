@@ -1,6 +1,6 @@
 import { IAuthorData } from "../../interfaces";
 
-import './AuthorAvatar.scss';
+import './styles.scss';
 
 interface IAuthorAvatarProps {
   author: IAuthorData;

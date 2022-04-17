@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getHomepageData } from "../../services/contentstack";
 
-import './Logo.scss';
+import './styles.scss';
 
 export function Logo() {
   const [siteName, setSiteName] = useState("");

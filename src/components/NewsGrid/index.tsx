@@ -1,7 +1,7 @@
 import { INewsData } from "../../interfaces"
-import { NewsCard } from "../NewsCard/NewsCard"
+import { NewsCard } from "../NewsCard"
 
-import './NewsGrid.scss';
+import './styles.scss';
 
 interface INewsGridProps {
   news: INewsData[];
